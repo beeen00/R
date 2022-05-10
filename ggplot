@@ -1,0 +1,69 @@
+### 패키지 정리
+
+install.packages("xlsx")
+library(xlsx)
+
+if(!require(ggplot2)){
+  install.packages("ggplot2")
+  library(ggplot2)
+}
+
+install.packages("plyr")
+library(plyr)
+
+if (!require(dplyr)){
+  install.packages("dplyr")
+  require(dplyr)
+} 
+library(dplyr)
+
+install.packages("reshape")
+library(reshape)
+
+if(!require(RColorBrewer)){
+  install.packages("RColorBrewer")
+  require(RColorBrewer)
+}
+
+
+
+
+
+### bar chart
+ggplot(df, aes(x, y))+
+  geom_bar(stat='identity', fill = c("blue"))+
+  labs(title=" ", caption=" ") +
+  geom_text(aes(label=y), vjust=-1)
+
+
+
+### line chart
+ggplot(df, aes(x, y, group=1)) + 
+     geom_line(colour="blue") + 
+     geom_point(size=2, shape=19, colour="blue") +
+     ggtitle(" ") +
+     geom_text(aes(label=y), hjust=0, vjust=-1)
+     
+     
+     
+### bar chart
+ggplot(df, aes(x, y)) +
+  geom_boxplot()
+  
+  
+  
+### bubble chart
+ggplot(df, aes(x, y)) +
+     geom_point(aes(col= , size=cnt)) +
+     labs(title = " ", x = " ", y = " ") 
+     # col = 다음에 bubble로 들어갈 열 이름 입력
+     
+     
+     
+### geom_tile
+ggplot(df, aes(x, y))+
+     geom_tile(aes(fill= ))+
+     scale_fill_gradientn(colors=brewer.pal(n=6, name="RdBu"))+
+     labs(title = " ",
+          x=" ", y=" ")
+     # fill = 다음에 tile값으로 들어갈 열 이름 입력
